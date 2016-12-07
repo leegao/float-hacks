@@ -95,7 +95,7 @@ $$
 $$
 
 Here, $\epsilon$ is the [machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon) for single precision, and it
-is computed by $\textrm{l2f}(1)$.
+is computed by $\textrm{l2f}(\textrm{f2l}(1) + 1) - 1$.
 
 To give a derivation of this equation, we'll need to borrow a few mathematical tools from analysis. In particular, while
 `l2f` and `f2l` have many discontinuities ($2^8$ of them to be exact), it is mostly smooth. This
@@ -180,8 +180,9 @@ this is pretty off the mark for general purposes (it approximates some other $c^
 $$
 \exp(x) \approx \textrm{l2f}\left((\epsilon^{-1} + b)x + \textrm{f2l}(1)\right)
 $$
-where, empirically, $b = \textrm{0x2df854}$ gives a good approximation. In particular, for all $n$, the $L^1$,
-$L^2$, and $L^{\infty}$ relative error is always below 10%.
+where, empirically, $b = \textrm{0x2df854}$ gives a good approximation. Notice that the $b$ we've chosen is close to
+$(2\epsilon)^{-1}$, which is what we need to transform $c^x$ to $e^x$.
+In particular, for all $n$, the $L^1$, $L^2$, and $L^{\infty}$ relative error is always below 10%.
 
 ### Log
 
