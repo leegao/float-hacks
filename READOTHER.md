@@ -177,9 +177,11 @@ this is pretty off the mark for general purposes (it approximates some other $c^
 $$
 \exp(x) \approx \textrm{l2f}\left((\epsilon^{-1} + b)x + \textrm{f2l}(1)\right)
 $$
-where, empirically, $b = \textrm{0x2df854}$ gives a good approximation. Notice that the $b$ we've chosen is close to
+where, empirically, $b = \textrm{0x38aa22}$ gives a good approximation. Notice that the $b$ we've chosen is close to
 $(2\epsilon)^{-1}$, which is what we need to transform $c^x$ to $e^x$.
 In particular, for all $n$, the $L^1$, $L^2$, and $L^{\infty}$ relative error is always below 10%.
+
+<p align="center">![exp](http://i.imgur.com/Kr7dcSz.png)</p>
 
 ### Log
 
@@ -204,6 +206,8 @@ $$
 where the $\log_2(x)$ term came from the fact that the base computation approximates the 2-logarithm. Empirically, I've
 found that a bias of $b = \textrm{0x66774}$ works well. In particular, for all $n$, the $L^1$,
 $L^2$, and $L^{\infty}$ relative error is always below 10%.
+
+<p align="center"> ![log](http://i.imgur.com/TsjGPwc.png) </p>
 
 -------------------------------------
 
