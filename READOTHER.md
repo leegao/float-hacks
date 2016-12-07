@@ -32,17 +32,19 @@ $\textrm{l2f}(x) : \textrm{long} \to \textrm{float}$.
 * $\textrm{f2l}(x)$ takes a `IEEE 754` single precision floating point number and outputs its "machine" representation.
 In essence, it acts like
 
-      unsigned long f2l(float x) {
-        union {float fl; unsigned long lg;} lens = { x };
-        return lens.lg;
-      }
+
+        unsigned long f2l(float x) {
+          union {float fl; unsigned long lg;} lens = { x };
+          return lens.lg;
+        }
 * $\textrm{l2f}(z)$ takes an unsigned long representing a float and returns a `IEEE 754` single precision floating point number.
 It acts like
 
-      float l2f(unsigned long z) {
-        union {float fl; unsigned long lg;} lens = { z };
-        return lens.fl;
-      }
+
+        float l2f(unsigned long z) {
+          union {float fl; unsigned long lg;} lens = { z };
+          return lens.fl;
+        }
 
 So for example, the fast inverse root method:
 
@@ -55,9 +57,21 @@ $$
 \textrm{l2f}\left(\textrm{0x5f3759df} - \frac{\textrm{f2l}(x)}{2}\right)
 $$
 
+In a similar vein, a fast inverse cube-root method is presented at the start of this page.
+$$
+\textrm{l2f}\left(\text{0x54a2fa8c} - \frac{\textrm{f2l}(x)}{3}\right) \approx \frac{1}{\sqrt[3]{x}}
+$$
+
+We will justify this in the next section.
+
 ### Arbitrary Powers
 
-
+We can approximate any $x^c$ using just integer arithmetic on the machine representation of $x$. To do
+so, compute
+$$
+\textrm{l2f}\left(M_c + c \times \textrm{f2l}(x)\right)
+$$
+where $M_c = (1 - c) \cdot \textrm{f2l}(1)$
 
 For more information on how the constant (`0x54a2fa8c`) is derived for
 the cube-root, visit http://www.bullshitmath.lol/.
