@@ -102,6 +102,7 @@ To give a derivation of this equation, we'll need to borrow a few mathematical t
 carries over to its "rate-of-change" as well, so we will just pretend that it has mostly smooth derivatives
 everywhere.
 
+#### Differentiating the `l2f` and `f2l` functions.
 Consider the function
 $$
 \frac{\partial \textrm{f2l}(f(z))}{\partial z} = \textrm{f2l}'(f(z)) \cdot f'(z)
@@ -147,6 +148,18 @@ From here, we also have
 \intertext{substituting $x = \textrm{l2f}(z)$ gives}
 \textrm{f2l}'(x) &\approx \frac{\epsilon^{-1}}{x}
 \end{align*}
+
+#### A Tale of Two Functions
+
+Given $\textrm{f2l}'(x) \approx \frac{\epsilon^{-1}}{x}$, antidifferentiating both sides gives
+$$
+\textrm{f2l}(x) \approx \epsilon^{-1} \log(x) + C
+$$
+
+Similarly, since $\textrm{l2f}'(x) \approx \epsilon \textrm{l2f}(x)$ satisfies $y' \approx \epsilon y$, we have
+$$
+\textrm{l2f}(x) \approx c \exp(\epsilon x)
+$$
 
 -------------------------------------
 

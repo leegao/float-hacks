@@ -92,6 +92,7 @@ To give a derivation of this equation, we'll need to borrow a few mathematical t
 carries over to its "rate-of-change" as well, so we will just pretend that it has mostly smooth derivatives
 everywhere.
 
+#### Differentiating the `l2f` and `f2l` functions.
 Consider the function
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/12d8e344454774536a8da176b6cc638d.svg" valign=0px width=252.606pt height=42.0354pt/></p>
 where the equality is a consequence of the chain-rule, assuming that `f2l` is differentiable at the particular value of
@@ -118,6 +119,14 @@ Therefore,
 
 From here, we also have
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/c1a2f7231dfbed1936ce911695bc7903.svg" valign=0px width=468.128pt height=466.066pt/></p>
+
+#### A Tale of Two Functions
+
+Given <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/41bd2b9df7093e1c0caa2c5cade45afc.svg" valign=-6.870999999999999px width=108.07119999999999pt height=27.3462pt/>, antidifferentiating both sides gives
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/ec4b015914608948961ad0b8aa7aca12.svg" valign=0px width=200.074pt height=22.1446pt/></p>
+
+Similarly, since <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/4517ee70225fd1fbc2a56462aad1fb33.svg" valign=-4.962799999999991px width=136.898pt height=21.5936pt/> satisfies <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/fe24365f266dbd2a3c942fa304305bde.svg" valign=-3.8600199999999987px width=61.04859999999999pt height=18.81042pt/>, we have
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/3742db4f3e50f5a3a2b9b24080b3b10e.svg" valign=0px width=152.075pt height=19.85084pt/></p>
 
 -------------------------------------
 
