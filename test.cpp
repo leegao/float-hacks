@@ -6,7 +6,9 @@ using namespace floathacks;
 
 int main() {
     // More precise (2 newton iterations)
+    // Preferred, template struct that generates efficient code.
     std::cout << pow<FLOAT(-0.5f)>(3.1415926f) << ", expected " << std::pow(3.1415926f, -0.5f) << std::endl;
+    // Constant expression
     std::cout << consts::pow(3.1415926f, -0.5f) << ", expected " << std::pow(3.1415926f, -0.5f) << std::endl;
     // Raw guesses
     std::cout << fpow<FLOAT(-0.5f)>::estimate(3.1415926f) << ", expected " << std::pow(3.1415926f, -0.5f) << std::endl;
