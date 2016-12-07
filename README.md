@@ -72,5 +72,24 @@ As seen in the fast-inverse-root method, a bias of `-0x5c416` tend to work well 
 tried, as long as we tack on at least one Newton refinement stage at the end. It works well without refinement as well,
 but an even bias of `-0x5c000` works even better.
 
+Why does this work? See [these slides](http://www.bullshitmath.lol/FastRoot.slides.html) for the derivation. In
+particular, the fast inverse square-root is a subclass of this method.
+
+### Exp
+
+We can approximate <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/559b96359a4653a6c35dbf27c11f68d2.svg" valign=-4.962839999999996px width=57.22619999999999pt height=19.85084pt/> up to <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/b921a412dbb057d50cc70ebb4f18df62.svg" valign=0px width=57.705pt height=12.79276pt/> using a similar set of bit tricks. I'll first give its equation, and then
+give its derivations. As far as I am aware, these are original. However, since there are no refinement methods
+for the computation of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/559b96359a4653a6c35dbf27c11f68d2.svg" valign=-4.962839999999996px width=57.22619999999999pt height=19.85084pt/>, there is practically no reason to ever resort to this approximation unless you're okay
+with 10% error.
+
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/dd860a34346bda9f243b20a8f2525b7f.svg" valign=0px width=380.43pt height=24.0696pt/></p>
+
+Here, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/7ccca27b5ccc533a2dd72dc6fa28ed84.svg" valign=0px width=8.057379999999998pt height=8.54688pt/> is the [machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon) for single precision, and it
+is computed by <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/64885526322d9df034356737808e2ea7.svg" valign=-4.962839999999996px width=46.950799999999994pt height=19.85084pt/>.
+
+-------------------------------------
+
 For more information on how the constant (`0x54a2fa8c`) is derived for
 the cube-root, visit http://www.bullshitmath.lol/.
+
+Equations rendered with [readme2tex](https://github.com/leegao/readme2tex).
