@@ -6,7 +6,7 @@
 namespace floathacks {
     inline constexpr float l2f(unsigned long x);
     inline constexpr unsigned long f2l(float f);
-    constexpr std::tuple<int, int> break_float(float f, int pow, bool negate);
+    constexpr std::tuple<int, int> break_float(float f);
 }
 
 namespace floathacks { namespace consts {
@@ -30,9 +30,9 @@ namespace floathacks { namespace consts {
     inline constexpr float pow(float base, float c, unsigned iterations = 2) {
         return refine(
                 base,
-                fpow(base, 1.f/std::get<1>(break_float(c, 0, false))),
-                std::get<0>(break_float(c, 0, false)),
-                std::get<1>(break_float(c, 0, false)),
+                fpow(base, 1.f/std::get<1>(break_float(c))),
+                std::get<0>(break_float(c)),
+                std::get<1>(break_float(c)),
                 iterations);
     }
 
