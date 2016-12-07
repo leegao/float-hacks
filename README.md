@@ -63,7 +63,14 @@ We will justify this in the next section.
 We can approximate any <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/1bed8656510c12b49e4a47c9a81e78ac.svg" valign=0px width=18.439399999999996pt height=13.21354pt/> using just integer arithmetic on the machine representation of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/332cc365a4987aacce0ead01b8bdcc0b.svg" valign=0px width=11.345199999999998pt height=8.54688pt/>. To do
 so, compute
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/85325d7348ff0db8a0a89d53e9cec59f.svg" valign=0px width=173.3018pt height=19.85084pt/></p>
-where <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/12598784143ca70bf1fed30af7c66556.svg" valign=-4.962839999999996px width=173.45499999999998pt height=19.85084pt/>
+where <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/763af86a1c2d443760aeb707325ee397.svg" valign=-4.962839999999996px width=247.61639999999997pt height=19.85084pt/>. In general, any value of `bias`, as long
+as it is reasonably small, will work. At `bias = 0`, the method computes a value whose error is completely positive.
+Therefore, by increasing the bias, we can shift some of the error down into the negative plane and
+halve the error. 
+
+As seen in the fast-inverse-root method, a bias of `-0x5c416` tend to work well for pretty much every case that I've
+tried, as long as we tack on at least one Newton refinement stage at the end. It works well without refinement as well,
+but an even bias of `-0x5c000` works even better.
 
 For more information on how the constant (`0x54a2fa8c`) is derived for
 the cube-root, visit http://www.bullshitmath.lol/.

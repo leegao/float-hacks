@@ -71,7 +71,14 @@ so, compute
 $$
 \textrm{l2f}\left(M_c + c \times \textrm{f2l}(x)\right)
 $$
-where $M_c = (1 - c) \cdot \textrm{f2l}(1)$
+where $M_c = (1 - c) \cdot (\textrm{f2l}(1) + \textrm{bias})$. In general, any value of `bias`, as long
+as it is reasonably small, will work. At `bias = 0`, the method computes a value whose error is completely positive.
+Therefore, by increasing the bias, we can shift some of the error down into the negative plane and
+halve the error. 
+
+As seen in the fast-inverse-root method, a bias of `-0x5c416` tend to work well for pretty much every case that I've
+tried, as long as we tack on at least one Newton refinement stage at the end. It works well without refinement as well,
+but an even bias of `-0x5c000` works even better.
 
 For more information on how the constant (`0x54a2fa8c`) is derived for
 the cube-root, visit http://www.bullshitmath.lol/.
