@@ -36,6 +36,10 @@ namespace floathacks {
         return (blens { x }).float_view;
     }
 
+    inline constexpr float epsilon() {
+        return l2f(f2l(1) + 1) - 1;
+    }
+
     template<int num, int den>
     struct Ratio {
         constexpr static float value() { return static_cast<float>(num) / static_cast<float>(den); }
