@@ -33,4 +33,5 @@
 *.su
 
 # IDEA files
-.idea/
+/.idea/
+/cmake-build-debug/
