@@ -22,7 +22,8 @@ namespace floathacks { namespace consts {
         return c - static_cast<int>(c) == 0
                ? const_pow_(base, static_cast<int>(c))
                : l2f(static_cast<unsigned long>(
-                           static_cast<long long>(f2l(base) * c) + static_cast<long long>((1.0f - c) * (0x3f800000))));
+                           static_cast<long long>(f2l(base) * c) +
+                                   static_cast<long long>((1.0f - c) * (0x3f800000 - 0x5c416))));
     }
 
     inline constexpr float refine(float base, float estimate, int num, int den, unsigned iterations);

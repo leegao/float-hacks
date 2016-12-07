@@ -22,7 +22,7 @@ namespace floathacks {
     inline float static_pow_(float base) {
         union lens lens = { base };
         constexpr float c = static_cast<float>(n)/static_cast<float>(d);
-        constexpr long long M = static_cast<long long>((1.0f - c) * (0x3f800000));
+        constexpr long long M = static_cast<long long>((1.0f - c) * (0x3f800000 - 0x5c416));
         lens.int_view = static_cast<unsigned long>(static_cast<long long>(lens.int_view * c) + M);
         return lens.float_view;
     }
