@@ -176,11 +176,35 @@ $$
 \textrm{l2f}(\textrm{f2l}(1)) = \textrm{l2f}\left(\epsilon^{-1} \times 0 + C\right) = \textrm{l2f}(C)
 $$
 which gives $C = \textrm{f2l}(1)$. However, while this method gives bounded relative error, in its unbiased form
-this is pretty off the mark for general purposes. Instead, we can add in an unbiased form:
+this is pretty off the mark for general purposes (it approximates some other $c^x$). Instead, we can add in an unbiased form:
 $$
 \exp(x) \approx \textrm{l2f}\left((\epsilon^{-1} + b)x + \textrm{f2l}(1)\right)
 $$
 where, empirically, $b = \textrm{0x2df854}$ gives a good approximation. In particular, for all $n$, the $L^1$,
+$L^2$, and $L^{\infty}$ relative error is always below 10%.
+
+### Log
+
+In a similar spirit, we can use the approximation
+$$
+\textrm{f2l}(x) \approx \epsilon^{-1} \log(x) + C
+$$
+to derive
+$$
+\log(x) \approx \epsilon \times \left(\textrm{f2l}(x) - C\right)
+$$
+Imposing a boundary condition at $x = 1$ gives $C = \textrm{f2l}(1)$, so we should expect
+$$
+\log(x) \approx \epsilon \times \left(\textrm{f2l}(x) - \textrm{f2l}(1)\right)
+$$
+
+However, this actually computes some other logarithm $\log_c(x)$, and we'll have to, again, unbias this term
+$$
+\log(x) \approx \epsilon \times \left(\textrm{f2l}(x) - \textrm{f2l}(1) + b\right) \times \log_2(x)
+$$
+
+where the $\log_2(x)$ term came from the fact that the base computation approximates the 2-logarithm. Empirically, I've
+found that a bias of $b = \textrm{0x66774}$ works well. In particular, for all $n$, the $L^1$,
 $L^2$, and $L^{\infty}$ relative error is always below 10%.
 
 -------------------------------------

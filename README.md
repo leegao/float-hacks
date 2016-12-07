@@ -139,9 +139,25 @@ which suggests that <img src="https://rawgit.com/leegao/fast-inverse-cube-root/m
 Since we would like <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/fc627948191f20de9f76da56255cf0ff.svg" valign=-4.962839999999996px width=92.2408pt height=19.85084pt/>, we can impose the boundary condition
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/96ca7d2813c9f413253ffba263c6fee6.svg" valign=0px width=336.618pt height=24.0696pt/></p>
 which gives <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/168268e1451a8dfc43a23b8773d2ab42.svg" valign=-4.962839999999996px width=89.0726pt height=19.85084pt/>. However, while this method gives bounded relative error, in its unbiased form
-this is pretty off the mark for general purposes. Instead, we can add in an unbiased form:
+this is pretty off the mark for general purposes (it approximates some other <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/80c5c65e2fa2a2d733d1ac16fa5b3acc.svg" valign=0px width=17.5922pt height=13.21354pt/>). Instead, we can add in an unbiased form:
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/1768bdc96604f36fc58deea3f106c4f1.svg" valign=0px width=287.168pt height=24.0696pt/></p>
 where, empirically, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/63a6561784b752ca7e8a57f1d805d019.svg" valign=0px width=112.22619999999999pt height=13.7853pt/> gives a good approximation. In particular, for all <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/55a049b8f161ae7cfeb0197d75aff967.svg" valign=0px width=11.914999999999996pt height=8.54688pt/>, the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/596205e74b63d939fb386f5456910cf6.svg" valign=0px width=21.422199999999997pt height=16.18566pt/>,
+<img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/e8831293b846e3a3799cd6a02e4a0cd9.svg" valign=0px width=21.422199999999997pt height=16.18566pt/>, and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/72d8c986bb268cc5845e6aa7b3d3ce0f.svg" valign=0px width=29.334999999999994pt height=13.56472pt/> relative error is always below 10%.
+
+### Log
+
+In a similar spirit, we can use the approximation
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/ec4b015914608948961ad0b8aa7aca12.svg" valign=0px width=200.074pt height=22.1446pt/></p>
+to derive
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/a59a6cf3ffdb2becd3ffa45eacf5df41.svg" valign=0px width=215.13pt height=19.85084pt/></p>
+Imposing a boundary condition at <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/8614628c35cbd72f9732b246c2e4d7b8.svg" valign=0px width=47.779599999999995pt height=12.79276pt/> gives <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/168268e1451a8dfc43a23b8773d2ab42.svg" valign=-4.962839999999996px width=89.0726pt height=19.85084pt/>, so we should expect
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/7774c7653eb46407ac10b0ebf9f0ab66.svg" valign=0px width=246.468pt height=19.85084pt/></p>
+
+However, this actually computes some other logarithm <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/c6774276dd6e07aabea5c2d3725f52b4.svg" valign=-4.962839999999996px width=60.6386pt height=19.85084pt/>, and we'll have to, again, unbias this term
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/7bacde2da21534aaaf06d6f354884c15.svg" valign=0px width=365.41pt height=19.85084pt/></p>
+
+where the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/2bf3e29d19ad9f0c0758e54dcc9fdf9b.svg" valign=-4.962839999999996px width=61.46039999999999pt height=19.85084pt/> term came from the fact that the base computation approximates the 2-logarithm. Empirically, I've
+found that a bias of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/a6bb6f6852e5def4a2ac06b15cdee7a8.svg" valign=0px width=105.0578pt height=13.7853pt/> works well. In particular, for all <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/55a049b8f161ae7cfeb0197d75aff967.svg" valign=0px width=11.914999999999996pt height=8.54688pt/>, the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/596205e74b63d939fb386f5456910cf6.svg" valign=0px width=21.422199999999997pt height=16.18566pt/>,
 <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/e8831293b846e3a3799cd6a02e4a0cd9.svg" valign=0px width=21.422199999999997pt height=16.18566pt/>, and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/72d8c986bb268cc5845e6aa7b3d3ce0f.svg" valign=0px width=29.334999999999994pt height=13.56472pt/> relative error is always below 10%.
 
 -------------------------------------
