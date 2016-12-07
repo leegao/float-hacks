@@ -97,6 +97,44 @@ $$
 Here, $\epsilon$ is the [machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon) for single precision, and it
 is computed by $\textrm{l2f}(1)$.
 
+To give a derivation of this equation, we'll need to borrow a few mathematical tools from analysis. In particular, while
+`l2f` and `f2l` have many discontinuities ($2^8$ of them to be exact), it is mostly smooth. This
+carries over to its "rate-of-change" as well, so we will just pretend that it has mostly smooth derivatives
+everywhere.
+
+Consider the function
+$$
+\frac{\partial \textrm{f2l}(f(z))}{\partial z} = \textrm{f2l}'(f(z)) \cdot f'(z)
+$$
+where the equality is a consequence of the chain-rule, assuming that `f2l` is differentiable at the particular value of
+$f(z)$. Now, this raises an interesting question: What does it mean to take a derivative of $\textrm{f2l}(x)$?
+
+Well, it's not all that mysterious. The derivative of `f2l` is just the rate at which a number's IEEE 754 machine
+representation changes as we make small perturbations to a number. Unfortunately, while it might be easy to compute
+this derivative as a numerical approximation, we still don't have an approximate form for algebraic manipulation.
+
+While $\textrm{f2l}'(x)$ might be difficult to construct, we can fair much better with its sibling, $\textrm{l2f}'(x)$.
+Now, the derivative $\textrm{l2f}'(x)$ is the rate that a float will change given that we make small perturbations
+to its machine representation. However, since its machine representations are all bit-vectors, it doesn't make sense
+to take a derivative here since we can't make these perturbations arbitrarily small. The smallest change we can make
+is to either add or subtract one. However, if we just accept our fate, then we can define the "derivative" as the finite
+difference
+$$
+\textrm{l2f}'(x) \approx \frac{\textrm{l2f}(x + 1) - \textrm{l2f}(x)}{1}
+$$
+where
+\begin{align*}
+\textrm{l2f}(x + 1) &= \textrm{l2f}(x) + \epsilon \times 2^{\lfloor\log_2(\textrm{l2f}(x))\rfloor} \\
+&\approx \textrm{l2f}(x) + \epsilon \times \textrm{l2f}(x)
+\end{align*}
+
+Here, equality holds when $\textrm{l2f}(x)$ is a perfect power of $2$ (including fractions of the form $2^{-k}$).
+
+Therefore,
+$$
+\textrm{l2f}'(x) \approx \epsilon \times \textrm{l2f}(x)
+$$
+
 -------------------------------------
 
 For more information on how the constant (`0x54a2fa8c`) is derived for

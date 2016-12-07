@@ -87,6 +87,35 @@ with 10% error.
 Here, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/7ccca27b5ccc533a2dd72dc6fa28ed84.svg" valign=0px width=8.057379999999998pt height=8.54688pt/> is the [machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon) for single precision, and it
 is computed by <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/64885526322d9df034356737808e2ea7.svg" valign=-4.962839999999996px width=46.950799999999994pt height=19.85084pt/>.
 
+To give a derivation of this equation, we'll need to borrow a few mathematical tools from analysis. In particular, while
+`l2f` and `f2l` have many discontinuities (<img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/4f3b183ca15faf05b91c6ad7e3b6d7a5.svg" valign=0px width=17.838199999999997pt height=16.18566pt/> of them to be exact), it is mostly smooth. This
+carries over to its "rate-of-change" as well, so we will just pretend that it has mostly smooth derivatives
+everywhere.
+
+Consider the function
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/12d8e344454774536a8da176b6cc638d.svg" valign=0px width=252.606pt height=42.0354pt/></p>
+where the equality is a consequence of the chain-rule, assuming that `f2l` is differentiable at the particular value of
+<img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/210d22201f1dd53994dc748e91210664.svg" valign=-4.962839999999996px width=37.410799999999995pt height=19.85084pt/>. Now, this raises an interesting question: What does it mean to take a derivative of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/014a505b8ec0a2e3dd98b6c8577cbdea.svg" valign=-4.962839999999996px width=48.370599999999996pt height=19.85084pt/>?
+
+Well, it's not all that mysterious. The derivative of `f2l` is just the rate at which a number's IEEE 754 machine
+representation changes as we make small perturbations to a number. Unfortunately, while it might be easy to compute
+this derivative as a numerical approximation, we still don't have an approximate form for algebraic manipulation.
+
+While <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/c380902839f6237c1c6760127ad4ccfa.svg" valign=-4.962799999999991px width=53.9608pt height=21.5936pt/> might be difficult to construct, we can fair much better with its sibling, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/ed9711acdecd664aa11a66b17111740a.svg" valign=-4.962799999999991px width=53.9608pt height=21.5936pt/>.
+Now, the derivative <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/ed9711acdecd664aa11a66b17111740a.svg" valign=-4.962799999999991px width=53.9608pt height=21.5936pt/> is the rate that a float will change given that we make small perturbations
+to its machine representation. However, since its machine representations are all bit-vectors, it doesn't make sense
+to take a derivative here since we can't make these perturbations arbitrarily small. The smallest change we can make
+is to either add or subtract one. However, if we just accept our fate, then we can define the "derivative" as the finite
+difference
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/51b0758e839d40e093628d5fdad75d91.svg" valign=0px width=238.472pt height=42.0354pt/></p>
+where
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/594af30420fe403e3ecad1c72cd67c0e.svg" valign=0px width=318.392pt height=53.4994pt/></p>
+
+Here, equality holds when <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/71207e357beb2b5cf4f092c9ebcedc2a.svg" valign=-4.962839999999996px width=48.370599999999996pt height=19.85084pt/> is a perfect power of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/76c5792347bb90ef71cfbace628572cf.svg" valign=0px width=9.925319999999996pt height=12.79276pt/> (including fractions of the form <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/99f338fcaa9681622b3f135c089bf43a.svg" valign=0px width=31.1066pt height=16.88044pt/>).
+
+Therefore,
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/202b89eea44d638e1fee08bb018a0f17.svg" valign=0px width=161.1932pt height=21.5936pt/></p>
+
 -------------------------------------
 
 For more information on how the constant (`0x54a2fa8c`) is derived for
