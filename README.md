@@ -116,6 +116,9 @@ Here, equality holds when <img src="https://rawgit.com/leegao/fast-inverse-cube-
 Therefore,
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/202b89eea44d638e1fee08bb018a0f17.svg" valign=0px width=161.1932pt height=21.5936pt/></p>
 
+From here, we also have
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/c1a2f7231dfbed1936ce911695bc7903.svg" valign=0px width=468.128pt height=466.066pt/></p>
+
 -------------------------------------
 
 For more information on how the constant (`0x54a2fa8c`) is derived for

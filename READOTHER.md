@@ -135,6 +135,19 @@ $$
 \textrm{l2f}'(x) \approx \epsilon \times \textrm{l2f}(x)
 $$
 
+From here, we also have
+\begin{align*}
+\textrm{f2l}(\textrm{l2f}(z)) &= z \\
+\frac{\partial \textrm{f2l}(\textrm{l2f}(z))}{\partial z} &= \frac{dz}{dz} \\
+\intertext{by the chain rule}
+\textrm{f2l}'(\textrm{l2f}(z)) \textrm{l2f}'(z) &= 1 \\
+\textrm{f2l}'(\textrm{l2f}(z)) &= \frac{1}{\textrm{l2f}'(z)} \\
+\intertext{recall that $\textrm{l2f}'(z) = \epsilon \times \textrm{l2f}(z)$}
+&\approx \frac{1}{\epsilon \times \textrm{l2f}(z)} \\
+\intertext{substituting $x = \textrm{l2f}(z)$ gives}
+\textrm{f2l}'(x) &\approx \frac{\epsilon^{-1}}{x}
+\end{align*}
+
 -------------------------------------
 
 For more information on how the constant (`0x54a2fa8c`) is derived for
