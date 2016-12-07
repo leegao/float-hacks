@@ -161,6 +161,28 @@ $$
 \textrm{l2f}(x) \approx c \exp(\epsilon x)
 $$
 
+This makes sense, since we'd like these two functions to be inverses of each other.
+
+#### Exp, redux.
+
+Consider
+$$
+\textrm{f2l}(\exp(x)) \approx \epsilon^{-1} \log(\exp(x)) + C
+$$
+which suggests that $\exp(x) \approx \textrm{l2f}\left(\epsilon^{-1} x + C\right)$.
+
+Since we would like $\exp(0) = 1$, we can impose the boundary condition
+$$
+\textrm{l2f}(\textrm{f2l}(1)) = \textrm{l2f}\left(\epsilon^{-1} \times 0 + C\right) = \textrm{l2f}(C)
+$$
+which gives $C = \textrm{f2l}(1)$. However, while this method gives bounded relative error, in its unbiased form
+this is pretty off the mark for general purposes. Instead, we can add in an unbiased form:
+$$
+\exp(x) \approx \textrm{l2f}\left((\epsilon^{-1} + b)x + \textrm{f2l}(1)\right)
+$$
+where, empirically, $b = \textrm{0x2df854}$ gives a good approximation. In particular, for all $n$, the $L^1$,
+$L^2$, and $L^{\infty}$ relative error is always below 10%.
+
 -------------------------------------
 
 For more information on how the constant (`0x54a2fa8c`) is derived for
