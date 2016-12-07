@@ -181,7 +181,7 @@ where, empirically, $b = \textrm{0x38aa22}$ gives a good approximation. Notice t
 $(2\epsilon)^{-1}$, which is what we need to transform $c^x$ to $e^x$.
 In particular, for all $n$, the $L^1$, $L^2$, and $L^{\infty}$ relative error is always below 10%.
 
-<p align="center">![exp](http://i.imgur.com/Kr7dcSz.png)</p>
+<p align="center"><img src="http://i.imgur.com/Kr7dcSz.png"/></p>
 
 ### Log
 
@@ -207,7 +207,7 @@ where the $\log_2(x)$ term came from the fact that the base computation approxim
 found that a bias of $b = \textrm{0x66774}$ works well. In particular, for all $n$, the $L^1$,
 $L^2$, and $L^{\infty}$ relative error is always below 10%.
 
-<p align="center"> ![log](http://i.imgur.com/TsjGPwc.png) </p>
+<p align="center"><img src="http://i.imgur.com/TsjGPwc.png"/></p>
 
 -------------------------------------
 

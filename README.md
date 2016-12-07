@@ -145,7 +145,7 @@ where, empirically, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/m
 <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/23f78e0b2a6bbbadec2d25ce8d5a81a0.svg" valign=-4.466519999999992px width=48.367799999999995pt height=19.033559999999998pt/>, which is what we need to transform <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/80c5c65e2fa2a2d733d1ac16fa5b3acc.svg" valign=0.0px width=15.83298pt height=11.892186pt/> to <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/b6b70db98c2a5c2031dea120886f8211.svg" valign=0.0px width=16.42032pt height=11.892186pt/>.
 In particular, for all <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/55a049b8f161ae7cfeb0197d75aff967.svg" valign=0.0px width=10.723499999999996pt height=7.692192pt/>, the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/596205e74b63d939fb386f5456910cf6.svg" valign=0.0px width=19.27998pt height=14.567093999999999pt/>, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/e8831293b846e3a3799cd6a02e4a0cd9.svg" valign=0.0px width=19.27998pt height=14.567093999999999pt/>, and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/72d8c986bb268cc5845e6aa7b3d3ce0f.svg" valign=0.0px width=26.401499999999995pt height=12.208248pt/> relative error is always below 10%.
 
-<p align="center">![exp](http://i.imgur.com/Kr7dcSz.png)</p>
+<p align="center"><img src="http://i.imgur.com/Kr7dcSz.png"/></p>
 
 ### Log
 
@@ -163,7 +163,7 @@ where the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs
 found that a bias of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/a6bb6f6852e5def4a2ac06b15cdee7a8.svg" valign=0.0px width=94.55202pt height=12.40677pt/> works well. In particular, for all <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/55a049b8f161ae7cfeb0197d75aff967.svg" valign=0.0px width=10.723499999999996pt height=7.692192pt/>, the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/596205e74b63d939fb386f5456910cf6.svg" valign=0.0px width=19.27998pt height=14.567093999999999pt/>,
 <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/e8831293b846e3a3799cd6a02e4a0cd9.svg" valign=0.0px width=19.27998pt height=14.567093999999999pt/>, and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/72d8c986bb268cc5845e6aa7b3d3ce0f.svg" valign=0.0px width=26.401499999999995pt height=12.208248pt/> relative error is always below 10%.
 
-<p align="center"> ![log](http://i.imgur.com/TsjGPwc.png) </p>
+<p align="center"><img src="http://i.imgur.com/TsjGPwc.png"/></p>
 
 -------------------------------------
 
