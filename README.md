@@ -118,7 +118,7 @@ Therefore,
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/202b89eea44d638e1fee08bb018a0f17.svg" valign=0.0px width=145.07388pt height=19.43424pt/></p>
 
 From here, we also have
-<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/c1a2f7231dfbed1936ce911695bc7903.svg" valign=0.0px width=421.3152pt height=419.45939999999996pt/></p>
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/master/svgs/95f95e0e442c68d11bba22f18d4752b1.svg" valign=0.0px width=492.5556pt height=235.81799999999998pt/></p>
 
 #### A Tale of Two Functions
 

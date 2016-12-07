@@ -140,13 +140,10 @@ From here, we also have
 \begin{align*}
 \textrm{f2l}(\textrm{l2f}(z)) &= z \\
 \frac{\partial \textrm{f2l}(\textrm{l2f}(z))}{\partial z} &= \frac{dz}{dz} \\
-\intertext{by the chain rule}
-\textrm{f2l}'(\textrm{l2f}(z)) \textrm{l2f}'(z) &= 1 \\
+\textrm{f2l}'(\textrm{l2f}(z)) \textrm{l2f}'(z) &= 1 & \text{chain rule}\\
 \textrm{f2l}'(\textrm{l2f}(z)) &= \frac{1}{\textrm{l2f}'(z)} \\
-\intertext{recall that $\textrm{l2f}'(z) = \epsilon \times \textrm{l2f}(z)$}
-&\approx \frac{1}{\epsilon \times \textrm{l2f}(z)} \\
-\intertext{substituting $x = \textrm{l2f}(z)$ gives}
-\textrm{f2l}'(x) &\approx \frac{\epsilon^{-1}}{x}
+&\approx \frac{1}{\epsilon \times \textrm{l2f}(z)} & \text{since }\textrm{l2f}'(z) = \epsilon \textrm{l2f}(z)\\
+\textrm{f2l}'(x) &\approx \frac{\epsilon^{-1}}{x} & \text{by substituting } x = \textrm{l2f}(z)
 \end{align*}
 
 #### A Tale of Two Functions
