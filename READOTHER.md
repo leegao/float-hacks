@@ -6,7 +6,7 @@ $$
 \textrm{l2f}\left(\text{0x54a2fa8c} - \frac{\textrm{f2l}(x)}{3}\right) \approx \frac{1}{\sqrt[3]{x}}
 $$
 
-<sub>*Equations for a "fast" inverse cube-root method.*</sub>
+<sub>*Equations for a "fast" $\frac{1}{\sqrt[3]{x}}$ method.*</sub>
 
 ------------------------------------
 
@@ -263,7 +263,7 @@ $L^2$, and $L^{\infty}$ relative error is always below 10%.
 
 -------------------------------------
 
-For more information on how the constant (`0x54a2fa8c`) is derived for
+For more information on how the constant ($\text{0x54a2fa8c}$) is derived for
 the cube-root, visit http://www.bullshitmath.lol/.
 
 Equations rendered with [readme2tex](https://github.com/leegao/readme2tex).

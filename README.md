@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/690b9db878741ab50045c64c303ad998.svg" align=middle width=256.66560000000004pt height=42.87816pt/></p>
 
-<sub>*Equations for a "fast" inverse cube-root method.*</sub>
+<sub>*Equations for a "fast" <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/3f5ce0fda24ff090e168fcbc2b6288a9.svg" align=middle width=19.912860000000006pt height=30.239999999999995pt/> method.*</sub>
 
 ------------------------------------
 
@@ -219,7 +219,7 @@ found that a bias of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/
 
 -------------------------------------
 
-For more information on how the constant (`0x54a2fa8c`) is derived for
+For more information on how the constant (<img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/020b87e24d0ffe9a99194ef0411648e7.svg" align=middle width=85.35888pt height=24.813360000000007pt/>) is derived for
 the cube-root, visit http://www.bullshitmath.lol/.
 
 Equations rendered with [readme2tex](https://github.com/leegao/readme2tex).
