@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/690b9db878741ab50045c64c303ad998.svg" align=middle width=256.66560000000004pt height=42.87816pt/></p>
 
-<sub>*Equations for a "fast" inverse cube-root method.*</sub>
+<sub>*Equations for a "fast" <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/3f5ce0fda24ff090e168fcbc2b6288a9.svg" align=middle width=19.912860000000006pt height=30.239999999999995pt/> method.*</sub>
 
 ------------------------------------
 

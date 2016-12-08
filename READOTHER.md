@@ -6,7 +6,7 @@ $$
 \textrm{l2f}\left(\text{0x54a2fa8c} - \frac{\textrm{f2l}(x)}{3}\right) \approx \frac{1}{\sqrt[3]{x}}
 $$
 
-<sub>*Equations for a "fast" inverse cube-root method.*</sub>
+<sub>*Equations for a "fast" $\frac{1}{\sqrt[3]{x}}$ method.*</sub>
 
 ------------------------------------
 
