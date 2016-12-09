@@ -8,7 +8,7 @@ $$
 
 <sub>*Equations for a "fast" $\frac{1}{\sqrt[3]{x}}$ method.*</sub>
 
-------------------------------------
+-------------------------------------
 
 This repository contains a set of procedures to compute numerical methods in the vein of the
 [fast inverse root method](https://en.wikipedia.org/wiki/Fast_inverse_square_root). In particular,
