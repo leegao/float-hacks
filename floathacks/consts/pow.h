@@ -18,12 +18,15 @@ namespace floathacks { namespace consts {
                ((num < 0) ? 1/b : b) * const_pow_(b, (num < 0) ? num + 1 : num - 1);
     }
 
+    inline constexpr long long pow_magic(float c) {
+        return static_cast<long long>((1.0f - c) * (0x3f800000 - 0x5c416));
+    }
+
     inline constexpr float fpow(float base, float c) {
         return c - static_cast<int>(c) == 0
                ? const_pow_(base, static_cast<int>(c))
                : l2f(static_cast<unsigned long>(
-                           static_cast<long long>(f2l(base) * c) +
-                                   static_cast<long long>((1.0f - c) * (0x3f800000 - 0x5c416))));
+                           static_cast<long long>(f2l(base) * c) + pow_magic(c)));
     }
 
     inline constexpr float refine(float base, float estimate, int num, int den, unsigned iterations);

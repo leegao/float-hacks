@@ -2,6 +2,7 @@
 #define FAST_INVERSE_CUBE_ROOT_STATIC_POW_H
 
 #include "common.h"
+#include "consts\pow.h"
 
 namespace floathacks {
     template <int num>
@@ -22,7 +23,7 @@ namespace floathacks {
     inline float static_pow_(float base) {
         union lens lens = { base };
         constexpr float c = static_cast<float>(n)/static_cast<float>(d);
-        constexpr long long M = static_cast<long long>((1.0f - c) * (0x3f800000 - 0x5c416));
+        constexpr long long M = consts::pow_magic(c);
         lens.int_view = static_cast<unsigned long>(static_cast<long long>(lens.int_view * c) + M);
         return lens.float_view;
     }
