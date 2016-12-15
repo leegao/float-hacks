@@ -1,8 +1,10 @@
 #ifndef FAST_INVERSE_CUBE_ROOT_STATIC_POW_H
 #define FAST_INVERSE_CUBE_ROOT_STATIC_POW_H
 
+#include <sstream>
+#include <iomanip>
 #include "common.h"
-#include "consts\pow.h"
+#include "consts/pow.h"
 
 namespace floathacks {
     template <int num>
@@ -38,7 +40,7 @@ namespace floathacks {
         }
     };
 
-    template <class F, int iterations = 2>
+    template <class F, unsigned int iterations = 2>
     inline float pow(float base) {
         double estimate = fpow<Ratio<1, F::d>>::estimate(base);
         for (int i = 0; i < iterations; i++) {
