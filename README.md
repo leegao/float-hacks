@@ -49,10 +49,14 @@ You can use everything in `floathacks` by including `hacks.h`
     #include <floathacks/hacks.h>
     using namespace floathacks; // Comment this out if you don't want your top-level namespace to be polluted
 
-### For Contributors
+#### For Contributors
 
 This document is compiled from `READOTHER.md` by `readme2tex`. Make sure that you `pip install readme2tex`. You
-can run `./texify.sh` to recompile this document after any changes to `READOTHER.md`.
+can run
+
+    python -m readme2tex --output README.md --branch svgs
+
+to recompile these docs.
 
 #### Pow
 
