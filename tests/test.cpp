@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 #include <chrono>
+#include <array>
 #include "../floathacks/hacks.h"
 
 using floathacks::Ratio;
@@ -119,18 +120,50 @@ void test_time_log(float s) {
     std::cout << "std::log Took " << duration << " ms" << std::endl;
 }
 
+void test_geometric_mean() {
+    std::cout << "Testing geometric mean." << std::endl;
+    for (int i = 0; i < 100; i++) {
+        float a = 1 + rand() % 100;
+        float b = 1 + rand() % 100;
+        float c = 1 + rand() % 100;
+        float actual = floathacks::fgmean<3>({ a, b, c });
+        float expected = powf(a * b * c, 1.0f/3);
+        if (fabs((actual - expected) / expected) > 2e-1) {
+            std::cout << "Geometric Mean for " << a << "*" << b << "*" << c
+                      << " failed: Expected " << expected << ", but got "
+                      << actual << " instead." << std::endl;
+            return;
+        }
+    }
+    std::cout << "Success!" << std::endl;
+}
+
 int main() {
+    test_geometric_mean();
+    std::cout << std::endl;
     test_pow<Ratio<1, 1>>();
+    std::cout << std::endl;
     test_pow<FLOAT(-0.5f)>();
+    std::cout << std::endl;
     test_pow<FLOAT(2)>();
+    std::cout << std::endl;
     test_pow<FLOAT(5)>(2e-1); // relative error is a bit higher
+    std::cout << std::endl;
     test_pow<FLOAT(0.2)>();
+    std::cout << std::endl;
     test_exp();
+    std::cout << std::endl;
     test_log();
+    std::cout << std::endl;
     float start = (float)(rand() % 10) / 10.0f;
     test_time_pow<FLOAT(2)>(start);
+    std::cout << std::endl;
     test_time_pow<FLOAT(-0.5f)>(start);
+    std::cout << std::endl;
     test_time_pow<FLOAT(5)>(start);
+    std::cout << std::endl;
     test_time_exp(start);
+    std::cout << std::endl;
     test_time_log(start);
+    std::cout << std::endl;
 }
