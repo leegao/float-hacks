@@ -8,6 +8,29 @@
 
 -------------------------------------
 
+Table of Contents
+=================
+
+* [Floating Point Hacks](#floating-point-hacks)
+     * [Completely useless, but fun nevertheless.](#completely-useless-but-fun-nevertheless)
+  * [Usage](#usage)
+     * [For Contributors](#for-contributors)
+        * [Pow](#pow)
+        * [Exp](#exp)
+        * [Log](#log)
+        * [Geometric Mean](#geometric-mean)
+  * [Justification](#justification)
+     * [Prelude](#prelude)
+     * [Arbitrary Powers](#arbitrary-powers)
+     * [Exp](#exp-1)
+        * [Differentiating the l2f and <code>f2l</code> functions.](#differentiating-the-l2f-and-f2l-functions)
+        * [A Tale of Two Functions](#a-tale-of-two-functions)
+        * [Exp, redux.](#exp-redux)
+     * [Log](#log-1)
+     * [Geometric Mean](#geometric-mean-1)
+
+-------------------------------------
+
 This repository contains a set of procedures to compute numerical methods in the vein of the
 [fast inverse root method](https://en.wikipedia.org/wiki/Fast_inverse_square_root). In particular,
 we will generate code that
