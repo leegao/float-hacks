@@ -14,7 +14,6 @@ Table of Contents
 =================
 
 * [Floating Point Hacks](#floating-point-hacks)
-     * [Completely useless, but fun nevertheless.](#completely-useless-but-fun-nevertheless)
   * [Usage](#usage)
      * [For Contributors](#for-contributors)
      * [Pow](#pow)
