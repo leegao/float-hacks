@@ -16,6 +16,7 @@ we will generate code that
 2. Computes irrational powers (<img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/1bed8656510c12b49e4a47c9a81e78ac.svg?invert_in_darkmode" align=middle width=15.212505pt height=21.80211pt/>) to within 10% relative error.
 3. Computes <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/559b96359a4653a6c35dbf27c11f68d2.svg?invert_in_darkmode" align=middle width=47.211615pt height=24.5652pt/> to within 10% relative error.
 4. Computes <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/38f816ed8d9782e71ecfd164e77c5150.svg?invert_in_darkmode" align=middle width=43.33032pt height=24.5652pt/> to within 10% relative error.
+5. Computes the geometric mean <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/c68457d92ea69ee4bcbeec172ff6d974.svg?invert_in_darkmode" align=middle width=60.618525pt height=30.26991pt/> of an `std::array` quickly to within 10% error.
 
 Additionally, we will do so using mostly just integer arithmetic.
 
@@ -75,6 +76,16 @@ All of the `f***` methods above have bounded relative errors of at most 10%. The
 can be made to give arbitrary precision by increasing the number of refinement iterations. Each refinement
 iteration takes time proportional to the number of digits in the floating point representation of the exponent.
 Note that since floats are finite, this is bounded above by 32 (and more tightly, 23).
+
+#### Geometric Mean
+
+You can compute the geometric mean (<img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/c68457d92ea69ee4bcbeec172ff6d974.svg?invert_in_darkmode" align=middle width=60.618525pt height=30.26991pt/>) of a `std::array<float, n>` with
+
+    float guess = fgmean<3>({ 1, 2, 3 });
+
+This can be refined, but you typically do not care about the absolute precision of a mean-like statistic.
+To refine this, you can run Newton's method on <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/9f6ce9432d21290378ce4be4a814bbee.svg?invert_in_darkmode" align=middle width=140.99184pt height=27.21543pt/>. As far as I am aware, this is
+also an original method.
 
 ## Justification
 
@@ -221,6 +232,18 @@ found that a bias of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/
 <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/e8831293b846e3a3799cd6a02e4a0cd9.svg?invert_in_darkmode" align=middle width=17.673315pt height=26.70624pt/>, and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/72d8c986bb268cc5845e6aa7b3d3ce0f.svg?invert_in_darkmode" align=middle width=24.201375pt height=22.38159pt/> relative error is always below 10%.
 
 <p align="center"><img src="http://i.imgur.com/TsjGPwc.png"/></p>
+
+### Geometric Mean
+
+There's a straightforward derivation of the geometric mean. Consider the approximations of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/28653a190084a1cb3afa50867e89bc25.svg?invert_in_darkmode" align=middle width=17.302725pt height=23.60787pt/> and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/708d35d0117081328cfd6b94751faca6.svg?invert_in_darkmode" align=middle width=18.58131pt height=23.60787pt/>,
+we can refine them as
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/4fce83c43066f0d63a49f27bdf7543ed.svg?invert_in_darkmode" align=middle width=197.8218pt height=45.00837pt/></p>
+Therefore, a bit of algebra will show that
+<p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/829691d57c701ef3292701cf056b54c7.svg?invert_in_darkmode" align=middle width=215.03295pt height=40.178325pt/></p>
+which reduces to the equation for the geometric mean. 
+
+Notice that we just add a series of integers, followed by
+an integer divide, which is pretty efficient.
 
 -------------------------------------
 

@@ -18,6 +18,7 @@ we will generate code that
 2. Computes irrational powers ($x^c$) to within 10% relative error.
 3. Computes $\exp(x)$ to within 10% relative error.
 4. Computes $\log(x)$ to within 10% relative error.
+5. Computes the geometric mean $\sqrt[n]{\prod_k^n x_k}$ of an `std::array` quickly to within 10% error.
 
 Additionally, we will do so using mostly just integer arithmetic.
 
@@ -77,6 +78,16 @@ All of the `f***` methods above have bounded relative errors of at most 10%. The
 can be made to give arbitrary precision by increasing the number of refinement iterations. Each refinement
 iteration takes time proportional to the number of digits in the floating point representation of the exponent.
 Note that since floats are finite, this is bounded above by 32 (and more tightly, 23).
+
+#### Geometric Mean
+
+You can compute the geometric mean ($\sqrt[n]{\prod_k^n x_k}$) of a `std::array<float, n>` with
+
+    float guess = fgmean<3>({ 1, 2, 3 });
+
+This can be refined, but you typically do not care about the absolute precision of a mean-like statistic.
+To refine this, you can run Newton's method on $\prod_k^n x_k - \textrm{guess}^n = 0$. As far as I am aware, this is
+also an original method.
 
 ## Justification
 
@@ -265,6 +276,23 @@ found that a bias of $b = \textrm{0x66774}$ works well. In particular, for all $
 $L^2$, and $L^{\infty}$ relative error is always below 10%.
 
 <p align="center"><img src="http://i.imgur.com/TsjGPwc.png"/></p>
+
+### Geometric Mean
+
+There's a straightforward derivation of the geometric mean. Consider the approximations of $\mathrm{f2l}$ and $\mathrm{l2f}$,
+we can refine them as
+\begin{align*}
+\mathrm{f2l}(x) &\approx \epsilon^{-1} \left(\log_2(x) + 127\right) \\
+\mathrm{l2f}(y) &\approx 2^{\epsilon y - 127}
+\end{align*}
+Therefore, a bit of algebra will show that
+$$
+\mathrm{l2f}\left(\frac{\sum_k^n \textrm{f2l}(x_k)}{n}\right) \approx 2^{\frac{\sum_k \log_2 x_k}{n}}
+$$
+which reduces to the equation for the geometric mean. 
+
+Notice that we just add a series of integers, followed by
+an integer divide, which is pretty efficient.
 
 -------------------------------------
 
