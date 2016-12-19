@@ -32,7 +32,7 @@ namespace floathacks {
 
     template <class F>
     struct fpow {
-        static_assert(F::value, "Must pass in a floathacks::Ratio");
+        // static_assert(F::value, "Must pass in a floathacks::Ratio");
         static_assert(F::n, "Must pass in a floathacks::Ratio");
         static_assert(F::d, "Must pass in a floathacks::Ratio");
         inline static float estimate(float base) {
