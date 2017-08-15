@@ -145,9 +145,11 @@ So for example, the fast inverse root method:
       float y = lens.fl;
 
 can be equivalently expressed as
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/1956bacf4be82337ef506b5f97ad6590.svg?invert_in_darkmode" align=middle width=185.85105pt height=39.30498pt/></p>
 
 In a similar vein, a fast inverse cube-root method is presented at the start of this page.
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/690b9db878741ab50045c64c303ad998.svg?invert_in_darkmode" align=middle width=235.2768pt height=39.30498pt/></p>
 
 We will justify this in the next section.
@@ -156,7 +158,9 @@ We will justify this in the next section.
 
 We can approximate any <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/1bed8656510c12b49e4a47c9a81e78ac.svg?invert_in_darkmode" align=middle width=15.212505pt height=21.80211pt/> using just integer arithmetic on the machine representation of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/332cc365a4987aacce0ead01b8bdcc0b.svg?invert_in_darkmode" align=middle width=9.35979pt height=14.10222pt/>. To do
 so, compute
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/85325d7348ff0db8a0a89d53e9cec59f.svg?invert_in_darkmode" align=middle width=142.973985pt height=16.376943pt/></p>
+
 where <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/763af86a1c2d443760aeb707325ee397.svg?invert_in_darkmode" align=middle width=204.28353pt height=24.5652pt/>. In general, any value of `bias`, as long
 as it is reasonably small, will work. At `bias = 0`, the method computes a value whose error is completely positive.
 Therefore, by increasing the bias, we can shift some of the error down into the negative plane and
@@ -188,7 +192,9 @@ everywhere.
 
 #### Differentiating the `l2f` and `f2l` functions.
 Consider the function
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/12d8e344454774536a8da176b6cc638d.svg?invert_in_darkmode" align=middle width=208.39995pt height=34.679205pt/></p>
+
 where the equality is a consequence of the chain-rule, assuming that `f2l` is differentiable at the particular value of
 <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/210d22201f1dd53994dc748e91210664.svg?invert_in_darkmode" align=middle width=30.86391pt height=24.5652pt/>. Now, this raises an interesting question: What does it mean to take a derivative of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/014a505b8ec0a2e3dd98b6c8577cbdea.svg?invert_in_darkmode" align=middle width=39.905745pt height=24.5652pt/>?
 
@@ -202,24 +208,31 @@ to its machine representation. However, since its machine representations are al
 to take a derivative here since we can't make these perturbations arbitrarily small. The smallest change we can make
 is to either add or subtract one. However, if we just accept our fate, then we can define the "derivative" as the finite
 difference
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/51b0758e839d40e093628d5fdad75d91.svg?invert_in_darkmode" align=middle width=196.7394pt height=34.679205pt/></p>
+
 where
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/594af30420fe403e3ecad1c72cd67c0e.svg?invert_in_darkmode" align=middle width=262.6734pt height=44.137005pt/></p>
 
 Here, equality holds when <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/71207e357beb2b5cf4f092c9ebcedc2a.svg?invert_in_darkmode" align=middle width=39.905745pt height=24.5652pt/> is a perfect power of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/76c5792347bb90ef71cfbace628572cf.svg?invert_in_darkmode" align=middle width=8.188389pt height=21.10779pt/> (including fractions of the form <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/99f338fcaa9681622b3f135c089bf43a.svg?invert_in_darkmode" align=middle width=25.662945pt height=27.85266pt/>).
 
 Therefore,
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/202b89eea44d638e1fee08bb018a0f17.svg?invert_in_darkmode" align=middle width=132.98439pt height=17.81472pt/></p>
 
 From here, we also have
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/95f95e0e442c68d11bba22f18d4752b1.svg?invert_in_darkmode" align=middle width=451.5093pt height=216.1665pt/></p>
 
 #### A Tale of Two Functions
 
 Given <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/41bd2b9df7093e1c0caa2c5cade45afc.svg?invert_in_darkmode" align=middle width=89.15874pt height=33.78408pt/>, antidifferentiating both sides gives
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/ec4b015914608948961ad0b8aa7aca12.svg?invert_in_darkmode" align=middle width=165.06105pt height=18.269295pt/></p>
 
 Similarly, since <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/4517ee70225fd1fbc2a56462aad1fb33.svg?invert_in_darkmode" align=middle width=112.94085pt height=27.44082pt/> satisfies <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/fe24365f266dbd2a3c942fa304305bde.svg?invert_in_darkmode" align=middle width=50.365095pt height=24.66816pt/>, we have
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/3742db4f3e50f5a3a2b9b24080b3b10e.svg?invert_in_darkmode" align=middle width=125.461875pt height=16.376943pt/></p>
 
 This makes sense, since we'd like these two functions to be inverses of each other.
@@ -227,14 +240,20 @@ This makes sense, since we'd like these two functions to be inverses of each oth
 #### Exp, redux.
 
 Consider
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/1f804b1d46ed8b17c6969731592141ac.svg?invert_in_darkmode" align=middle width=240.7647pt height=18.269295pt/></p>
+
 which suggests that <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/02956f2e4eb289405ddb74c773002d97.svg?invert_in_darkmode" align=middle width=171.25053pt height=27.94044pt/>.
 
 Since we would like <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/fc627948191f20de9f76da56255cf0ff.svg?invert_in_darkmode" align=middle width=76.09866pt height=24.5652pt/>, we can impose the boundary condition
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/96ca7d2813c9f413253ffba263c6fee6.svg?invert_in_darkmode" align=middle width=277.70985pt height=19.85742pt/></p>
+
 which gives <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/168268e1451a8dfc43a23b8773d2ab42.svg?invert_in_darkmode" align=middle width=73.484895pt height=24.5652pt/>. However, while this method gives bounded relative error, in its unbiased form
 this is pretty off the mark for general purposes (it approximates some other <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/80c5c65e2fa2a2d733d1ac16fa5b3acc.svg?invert_in_darkmode" align=middle width=14.513565pt height=21.80211pt/>). Instead, we can add in an unbiased form:
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/1768bdc96604f36fc58deea3f106c4f1.svg?invert_in_darkmode" align=middle width=236.9136pt height=19.85742pt/></p>
+
 where, empirically, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/fd57f6d91f6e31899590811fc9f2128b.svg?invert_in_darkmode" align=middle width=94.86114pt height=22.74558pt/> gives a good approximation. Notice that the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/4bdc8d9bcfb35e1c9bfb51fc69687dfc.svg?invert_in_darkmode" align=middle width=7.0283235pt height=22.74558pt/> we've chosen is close to
 <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/23f78e0b2a6bbbadec2d25ce8d5a81a0.svg?invert_in_darkmode" align=middle width=44.33715pt height=26.70624pt/>, which is what we need to transform <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/80c5c65e2fa2a2d733d1ac16fa5b3acc.svg?invert_in_darkmode" align=middle width=14.513565pt height=21.80211pt/> to <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/b6b70db98c2a5c2031dea120886f8211.svg?invert_in_darkmode" align=middle width=15.05196pt height=21.80211pt/>.
 In particular, for all <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.829875pt height=14.10222pt/>, the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/596205e74b63d939fb386f5456910cf6.svg?invert_in_darkmode" align=middle width=17.673315pt height=26.70624pt/>, <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/e8831293b846e3a3799cd6a02e4a0cd9.svg?invert_in_darkmode" align=middle width=17.673315pt height=26.70624pt/>, and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/72d8c986bb268cc5845e6aa7b3d3ce0f.svg?invert_in_darkmode" align=middle width=24.201375pt height=22.38159pt/> relative error is always below 10%.
@@ -244,13 +263,19 @@ In particular, for all <img src="https://rawgit.com/leegao/fast-inverse-cube-roo
 ### Log
 
 In a similar spirit, we can use the approximation
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/ec4b015914608948961ad0b8aa7aca12.svg?invert_in_darkmode" align=middle width=165.06105pt height=18.269295pt/></p>
+
 to derive
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/a59a6cf3ffdb2becd3ffa45eacf5df41.svg?invert_in_darkmode" align=middle width=177.48225pt height=16.376943pt/></p>
+
 Imposing a boundary condition at <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/8614628c35cbd72f9732b246c2e4d7b8.svg?invert_in_darkmode" align=middle width=39.41817pt height=21.10779pt/> gives <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/168268e1451a8dfc43a23b8773d2ab42.svg?invert_in_darkmode" align=middle width=73.484895pt height=24.5652pt/>, so we should expect
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/7774c7653eb46407ac10b0ebf9f0ab66.svg?invert_in_darkmode" align=middle width=203.3361pt height=16.376943pt/></p>
 
 However, this actually computes some other logarithm <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/c6774276dd6e07aabea5c2d3725f52b4.svg?invert_in_darkmode" align=middle width=50.026845pt height=24.5652pt/>, and we'll have to, again, unbias this term
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/7bacde2da21534aaaf06d6f354884c15.svg?invert_in_darkmode" align=middle width=301.46325pt height=16.376943pt/></p>
 
 where the <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/2bf3e29d19ad9f0c0758e54dcc9fdf9b.svg?invert_in_darkmode" align=middle width=50.70483pt height=24.5652pt/> term came from the fact that the base computation approximates the 2-logarithm. Empirically, I've
@@ -263,9 +288,13 @@ found that a bias of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/
 
 There's a straightforward derivation of the geometric mean. Consider the approximations of <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/28653a190084a1cb3afa50867e89bc25.svg?invert_in_darkmode" align=middle width=17.302725pt height=23.60787pt/> and <img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/708d35d0117081328cfd6b94751faca6.svg?invert_in_darkmode" align=middle width=18.58131pt height=23.60787pt/>,
 we can refine them as
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/4fce83c43066f0d63a49f27bdf7543ed.svg?invert_in_darkmode" align=middle width=197.8218pt height=45.00837pt/></p>
+
 Therefore, a bit of algebra will show that
+
 <p align="center"><img src="https://rawgit.com/leegao/fast-inverse-cube-root/svgs/svgs/829691d57c701ef3292701cf056b54c7.svg?invert_in_darkmode" align=middle width=215.03295pt height=40.178325pt/></p>
+
 which reduces to the equation for the geometric mean. 
 
 Notice that we just add a series of integers, followed by
